@@ -8,7 +8,11 @@ load_dotenv()
 
 # Lấy API key từ biến môi trường
 api_key = os.getenv("RAPIDAPI_KEY")
+<<<<<<< HEAD
 url = "https://chat-gpt26.p.rapidapi.com/v1/completions"
+=======
+url = "https://chat-gpt26.p.rapidapi.com/v1/completions"  # Sửa endpoint cho chính xác
+>>>>>>> f91161d46c7e74998ccf5f676f33095ee353d248
 
 # Kiểm tra xem API key đã được thiết lập hay chưa
 if not api_key:
