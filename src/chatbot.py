@@ -10,6 +10,7 @@ load_dotenv()
 api_key = os.getenv("RAPIDAPI_KEY")  # Đảm bảo biến môi trường được thiết lập
 url = "https://chat-gpt26.p.rapidapi.com/completions"
 
+
 # Kiểm tra xem API key đã được thiết lập hay chưa
 if not api_key:
     raise ValueError("API key is missing. Please set the RAPIDAPI_KEY environment variable.")
