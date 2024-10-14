@@ -1,4 +1,8 @@
 requests
 python-dotenv
 flask
+<<<<<<< HEAD
 gunicorn
+=======
+gunicorn
+>>>>>>> 3f15f89d2676a5771a650b062b8ea2b1b6f92d7c
