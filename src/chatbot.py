@@ -23,13 +23,13 @@ headers = {
 
 def get_response_from_chatbot(user_input):
    payload = {
-    "model": "gpt-4",  # Thay đổi nếu cần
-    "messages": [
-        {
-            "role": "user",
-            "content": user_input
-        }
-    ]
+	"model": "gpt-3.5-turbo",
+	"messages": [
+		{
+			"role": "user",
+			"content": "Hello"
+		}
+	]
 }
 
 
