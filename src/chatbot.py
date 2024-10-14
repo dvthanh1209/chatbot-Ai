@@ -38,4 +38,4 @@ def get_response_from_chatbot(user_input):
         bot_reply = response_data["choices"][0]["message"]["content"]
         return bot_reply
     else:
-        return f"Error: {response.status_code}, {response.text}"
+        return f"Error: {response.status_code} {response.text}"
