@@ -47,6 +47,5 @@ def get_response_from_chatbot(user_input):
         return f"Error: {response.status_code} {response.text}"
 	    response = requests.post(url, headers=headers, data=json.dumps(payload))
 
-print(f"Status Code: {response.status_code}")
-print(f"Response Text: {response.text}")
+
 
