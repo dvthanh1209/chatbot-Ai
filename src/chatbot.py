@@ -3,45 +3,48 @@ import requests
 import json
 from dotenv import load_dotenv
 
-# Tải các biến môi trường từ tệp .env
+# Load environment variables from .env file
 load_dotenv()
 
-# Lấy API key từ biến môi trường
-api_key = os.getenv("RAPIDAPI_KEY")  # Đảm bảo biến môi trường được thiết lập
-url = "https://chat-gpt26.p.rapidapi.com/completions"  # Kiểm tra kỹ URL
+# Get API key from environment variable
+api_key = os.getenv("RAPIDAPI_KEY")
 
-# Kiểm tra xem API key đã được thiết lập hay chưa
+# Check if the API key is provided
 if not api_key:
     raise ValueError("API key is missing. Please set the RAPIDAPI_KEY environment variable.")
 
+# Set the API URL
+url = "https://chat-gpt26.p.rapidapi.com/chat/completions"
+
+# Headers required for the API request
 headers = {
-    "Content-Type": "application/json",
-    "X-RapidAPI-Key": api_key,
-    "X-RapidAPI-Host": "chat-gpt26.p.rapidapi.com"
+    "x-rapidapi-key": api_key,
+    "x-rapidapi-host": "chat-gpt26.p.rapidapi.com",
+    "Content-Type": "application/json"
 }
 
+# Function to get a response from the chatbot API
 def get_response_from_chatbot(user_input):
+    # Payload containing user input
     payload = {
         "model": "gpt-3.5-turbo",
         "messages": [
             {
                 "role": "user",
-                "content": user_input
+                "content": user_input  # User's input
             }
         ]
     }
 
-    # In ra URL để kiểm tra endpoint
+    # Send the request to the API
     print(f"Sending request to: {url}")
-    
-    # Gửi yêu cầu tới API
-    response = requests.post(url, headers=headers, data=json.dumps(payload))
-    
-    # In mã trạng thái và toàn bộ phản hồi từ API để kiểm tra lỗi
+    response = requests.post(url, json=payload, headers=headers)
+
+    # Log the status code and response for debugging
     print(f"Status Code: {response.status_code}")
     print(f"Response Text: {response.text}")
 
-    # Kiểm tra nếu phản hồi thành công
+    # If the request was successful, return the chatbot's reply
     if response.status_code == 200:
         response_data = response.json()
         bot_reply = response_data["choices"][0]["message"]["content"]
