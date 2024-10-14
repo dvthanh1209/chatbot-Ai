@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from chatbot import get_response_from_chatbot
+from src.chatbot import get_response_from_chatbot  # Đảm bảo import đúng đường dẫn
 
 app = Flask(__name__)
 
