@@ -10,7 +10,6 @@ load_dotenv()
 api_key = os.getenv("RAPIDAPI_KEY")  # Đảm bảo biến môi trường được thiết lập
 url = "https://chat-gpt26.p.rapidapi.com/completions"
 
-
 # Kiểm tra xem API key đã được thiết lập hay chưa
 if not api_key:
     raise ValueError("API key is missing. Please set the RAPIDAPI_KEY environment variable.")
@@ -22,30 +21,27 @@ headers = {
 }
 
 def get_response_from_chatbot(user_input):
-   payload = {
-	"model": "gpt-3.5-turbo",
-	"messages": [
-		{
-			"role": "user",
-			"content": "Hello"
-		}
-	]
-}
+    payload = {
+        "model": "gpt-3.5-turbo",
+        "messages": [
+            {
+                "role": "user",
+                "content": user_input
+            }
+        ]
+    }
 
-
+    # Gửi yêu cầu đến API
     response = requests.post(url, headers=headers, data=json.dumps(payload))
 
     # In toàn bộ phản hồi từ API để kiểm tra lỗi
-    print(response.status_code)
-    print(response.json())
+    print(f"Status Code: {response.status_code}")
+    print(f"Response Text: {response.text}")
 
+    # Kiểm tra nếu phản hồi thành công
     if response.status_code == 200:
         response_data = response.json()
         bot_reply = response_data["choices"][0]["message"]["content"]
         return bot_reply
     else:
         return f"Error: {response.status_code} {response.text}"
-	    response = requests.post(url, headers=headers, data=json.dumps(payload))
-
-
-
