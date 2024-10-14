@@ -8,7 +8,7 @@ load_dotenv()
 
 # Lấy API key từ biến môi trường
 api_key = os.getenv("RAPIDAPI_KEY")  # Đảm bảo biến môi trường được thiết lập
-url = "https://chat-gpt26.p.rapidapi.com/completions"
+url = "https://chat-gpt26.p.rapidapi.com/completions"  # Kiểm tra kỹ đường dẫn API
 
 # Kiểm tra xem API key đã được thiết lập hay chưa
 if not api_key:
@@ -26,15 +26,18 @@ def get_response_from_chatbot(user_input):
         "messages": [
             {
                 "role": "user",
-                "content": user_input
+                "content": user_input  # Nội dung bạn muốn gửi từ người dùng
             }
         ]
     }
 
+    # In ra URL để kiểm tra endpoint chính xác
+    print(f"Sending request to: {url}")
+
     # Gửi yêu cầu đến API
     response = requests.post(url, headers=headers, data=json.dumps(payload))
 
-    # In toàn bộ phản hồi từ API để kiểm tra lỗi
+    # In mã trạng thái và toàn bộ phản hồi từ API để kiểm tra lỗi
     print(f"Status Code: {response.status_code}")
     print(f"Response Text: {response.text}")
 
