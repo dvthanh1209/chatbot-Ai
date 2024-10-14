@@ -8,7 +8,7 @@ load_dotenv()
 
 # Lấy API key từ biến môi trường
 api_key = os.getenv("RAPIDAPI_KEY")  # Đảm bảo biến môi trường được thiết lập
-url = "https://chat-gpt26.p.rapidapi.com/"
+url = "https://rapidapi.com/swift-api-swift-api-default/api/chat-gpt26/playground/apiendpoint_c5fd118a-5009-485c-84f8-2f1b94ca5219"
 
 
 # Kiểm tra xem API key đã được thiết lập hay chưa
